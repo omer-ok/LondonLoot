@@ -14,19 +14,30 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ok.londonloot.R
+import com.ok.londonloot.ui.theme.LondonLootTheme
+
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeMainAppNavigationPreview() {
+    LondonLootTheme {
+        BottomNavigationBar(null,null)
+    }
+}
 
 @Composable
-fun BottomNavigationBar(navController: NavController, appItems: List<Destination>) {
+fun BottomNavigationBar(navController: NavController?, appItems: List<Destination>?) {
     NavigationBar(
         containerColor = colorResource(id = R.color.white),
     ){
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val navBackStackEntry by navController!!.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
-        appItems.forEach { item ->
+        appItems?.forEach { item ->
             NavigationBarItem(
                 icon = {
                     Icon(modifier = Modifier
@@ -49,7 +60,7 @@ fun BottomNavigationBar(navController: NavController, appItems: List<Destination
                 label = { Text(text = item.title) },
                 selected = currentRoute == item.route,
                 onClick = {
-                    navController.navigate(item.route) {
+                    navController?.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
                                 saveState = true

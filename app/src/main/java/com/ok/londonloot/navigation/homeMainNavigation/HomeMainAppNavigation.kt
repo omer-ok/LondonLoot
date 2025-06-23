@@ -3,6 +3,7 @@ package com.ok.londonloot.navigation.homeMainNavigation
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -12,7 +13,18 @@ import com.ok.londonloot.addProduct.AddProduct
 import com.ok.londonloot.cameraXScreen.CameraXScreen
 import com.ok.londonloot.home.HomeMainApp
 import com.ok.londonloot.home.ProductDetailScreen
+import com.ok.londonloot.home.RentAnythingScreen
 import com.ok.londonloot.profile.ProfileScreenMain
+import com.ok.londonloot.ui.theme.LondonLootTheme
+
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun HomeMainAppNavigationPreview() {
+    LondonLootTheme {
+        HomeMainAppNavigation()
+    }
+}
 
 @Composable
 fun HomeMainAppNavigation() {

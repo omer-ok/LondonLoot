@@ -104,26 +104,21 @@ fun HomeMainApp(navController: NavController?){
     Column(modifier = Modifier
         .fillMaxSize()){
         Scaffold(
-            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+            modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection)
+                .fillMaxSize(),
             topBar = { AddAppBar(navController, scrollBehavior) },
             content = { padding ->
                 Surface(
                     modifier = Modifier.padding(padding)
-                        .fillMaxWidth()
-                        .fillMaxHeight(),
+                        .fillMaxSize(),
                     color = colorResource(R.color.white)
                 ) {
-                    Column(modifier = Modifier) {
-                        //SearchBar("Search vibes accross london")
-                        Box(modifier = Modifier.height(20.dp)) {  }
-                     /*   Column(modifier = Modifier
-                            .padding(16.dp, 0.dp, 16.dp, 16.dp),) {
-                            ImageProductPager()
-                        }*/
+                    Column(modifier = Modifier
+                        .fillMaxSize()) {
                         Text(modifier = Modifier
-                            .padding(16.dp, 0.dp, 16.dp, 16.dp)
+                            .padding(16.dp, 10.dp, 16.dp, 16.dp)
                             .align(Alignment.Start),
-                            text = "Flash Tasks for Cash",
+                            text = "Flash Gigs for Cash",
                             style = TextStyle(
                                 fontSize = 15.sp,
                                 lineHeight = 27.sp,
@@ -134,7 +129,6 @@ fun HomeMainApp(navController: NavController?){
                         )
                         MainFoodList(navController)
                     }
-                    //FloatingActionButtons(navController)
                 }
             }
 
@@ -174,7 +168,7 @@ fun AddAppBar(navController: NavController?,scrollBehavior: TopAppBarScrollBehav
                     )
                     Text(modifier = Modifier
                         .align(Alignment.Start),
-                        text = "Find a Place to Vibe in London",
+                        text = "Find your desired service",
                         style = TextStyle(
                             fontSize =10.sp,
                             lineHeight = 27.sp,
@@ -734,7 +728,7 @@ fun MainFoodList(navController: NavController?,foodList: List<GigData> = getGigD
         modifier = Modifier
             .fillMaxSize(),
         columns = GridCells.Fixed(2),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+        verticalArrangement = Arrangement.spacedBy(0.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         contentPadding = PaddingValues(0.dp)
     ) {
@@ -791,7 +785,7 @@ fun MovieRow(gigData: GigData, navController: NavController?, onItemClick:(GigDa
     }
     Card(modifier = Modifier
         .padding(4.dp)
-        .wrapContentSize(),
+        .fillMaxSize(),
         onClick = {
             onItemClick(gigData)
         },
@@ -828,7 +822,7 @@ fun MovieRow(gigData: GigData, navController: NavController?, onItemClick:(GigDa
                             )
                         )
                     }
-                    //AddToCartButton(null)
+
                 }
                 Row(modifier = Modifier
                     .wrapContentSize()) {
